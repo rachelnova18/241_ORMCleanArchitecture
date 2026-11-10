@@ -44,7 +44,10 @@ async function updateKomik(req, res) {
         if (!komik) {
             return res.status(404).json({ error: 'Komik not found' });
         }
-        await komik.update({ title, description, author });
+        komik.title = title;
+        komik.description = description;
+        komik.author = author;
+        await komik.save();
         res.status(200).json(komik);
     } catch (err) {
         console.error('Error updating komik:', err.message);
