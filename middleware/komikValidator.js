@@ -14,3 +14,7 @@ const komikSchema = joi.object({
     description: joi.string().trim().allow(null, '').optional(),
     author: joi.string().trim().min(2).max(100).required(),
 });
+
+const idSchema = joi.object({
+    id: joi.number().integer().positive().required(),
+});
